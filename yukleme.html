@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>DevNoLife – eDEX-UI Matrix</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    /* Reset & Basic Styles */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 100%; 
+      height: 100%;
+      background: black;
+      font-family: 'Courier New', Courier, monospace;
+      color: #00ff00;
+      overflow: hidden;
+    }
+    /* Matrix Canvas (Background) */
+    #matrixCanvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      background: black;
+      opacity: 0; /* Initially hidden */
+      transition: opacity 2s ease-in;
+    }
+    /* Terminal Text Area */
+    #terminal {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      width: calc(100% - 40px);
+      height: calc(100% - 40px);
+      white-space: pre-wrap;
+      overflow: hidden;
+      font-size: 1.2em;
+      line-height: 1.4;
+      opacity: 1;
+      transition: opacity 1s ease-out;
+    }
+    .cursor {
+      display: inline-block;
+      width: 10px;
+      height: 18px;
+      background: #00ff00;
+      animation: blink 0.8s infinite;
+    }
+    @keyframes blink {
+      50% { opacity: 0; }
+    }
+    /* Logo Container */
+    #logo-container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 4em;
+      color: #00ffcc;
+      border: 3px solid #00ffcc;
+      padding: 20px;
+      text-transform: uppercase;
+      font-weight: bold;
+      opacity: 0;
+      display: none;
+      transition: opacity 4s ease-in;
+    }
+  </style>
+</head>
+<body>
+  <!-- Matrix rain canvas (initially hidden) -->
+  <canvas id="matrixCanvas"></canvas>
+  <!-- Terminal text area -->
+  <div id="terminal"></div>
+  <!-- Logo container -->
+  <div id="logo-container">DevNoLife</div>
+  
+  <script>
+    /***** Terminal Typewriter Effect *****/
+    const terminalText = `
+Initializing system...
+Loading kernel modules...
+Starting core services...
+Mounting filesystems...
+Connecting to secure nodes...
+Decrypting sensitive data...
+Establishing secure connection...
+Calibrating interfaces...
+Loading user profile...
+Verifying credentials...
+Access granted.
+Preparing graphical interface...
+Optimizing performance...
+Synchronizing time...
+Finalizing startup sequence...
+Reading configuration files...
+Compiling resources...
+Initializing AI subsystems...
+Loading encryption keys...
+Activating firewalls...
+Calibrating hardware sensors...
+Starting network interfaces...
+Updating system logs...
+Verifying security protocols...
+System integrity check passed.
+Allocating virtual memory...
+Scanning for threats...
+Secure boot confirmed.
+Establishing encrypted tunnels...
+System diagnostics completed.
+Hardware acceleration enabled.
+Monitoring system health...
+Security framework engaged.
+All systems operational.
+System ready. Launching interface...
+    `;
+    
+    let index = 0;
+    const terminalDiv = document.getElementById('terminal');
+    
+    function typeTerminal() {
+      if (index < terminalText.length) {
+        const char = terminalText.charAt(index);
+        terminalDiv.innerHTML += char;
+        index++;
+        // Variable delay between characters: 10-30ms, extra delay at newline.
+        let delay = 10 + Math.random() * 20;
+        if (char === "\n") { delay += 50; }
+        setTimeout(typeTerminal, delay);
+      } else {
+        terminalDiv.innerHTML += '<span class="cursor"></span>';
+        // After finishing terminal text, wait a bit then fade out terminal and show logo.
+        setTimeout(() => {
+          terminalDiv.style.opacity = '0';
+          setTimeout(() => {
+            terminalDiv.style.display = 'none';
+            const logo = document.getElementById('logo-container');
+            logo.style.display = 'block';
+            // Trigger the logo's fade-in transition.
+            setTimeout(() => {
+              logo.style.opacity = '1';
+              // After the logo fades in, fade in the Matrix background.
+              setTimeout(() => {
+                document.getElementById('matrixCanvas').style.opacity = '1';
+              }, 2000);
+            }, 50);
+          }, 1000);
+        }, 2000);
+      }
+    }
+    
+    setTimeout(typeTerminal, 500);
+    
+    /***** Matrix Rain Effect *****/
+    const canvas = document.getElementById("matrixCanvas");
+    const ctx = canvas.getContext("2d");
+    
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+    
+    const matrixLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*()";
+    const matrixFontSize = 16;
+    const columns = Math.floor(canvas.width / matrixFontSize);
+    const drops = Array(columns).fill(1);
+    
+    function drawMatrix() {
+      ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = "#00ff00";
+      ctx.font = matrixFontSize + "px monospace";
+      for (let i = 0; i < drops.length; i++) {
+        const text = matrixLetters.charAt(Math.floor(Math.random() * matrixLetters.length));
+        ctx.fillText(text, i * matrixFontSize, drops[i] * matrixFontSize);
+        if (drops[i] * matrixFontSize > canvas.height && Math.random() > 0.975) {
+          drops[i] = 0;
+        }
+        drops[i]++;
+      }
+    }
+    
+    setInterval(drawMatrix, 50);
+  </script>
+  <footer>
+    <p>&copy; 2025 DevNoLife. All rights reserved.</p>
+    <p>Contact: <a href="mailto:alpttuncer@gmail.com">alpttuncer@gmail.com</a></p>
+  </footer>
+</body>
+</html>

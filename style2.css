@@ -1,0 +1,128 @@
+/* Reset & Basic Styles */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body {
+  width: 100%; 
+  height: 100%;
+  background: black;
+  font-family: 'Courier New', Courier, monospace;
+  color: #00ff00;
+  overflow: hidden;
+}
+
+/* Matrix Canvas (Background) */
+#matrixCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: black;
+  opacity: 0; /* Initially hidden */
+  transition: opacity 2s ease-in;
+}
+
+/* Terminal Text Area */
+#terminal {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: calc(100% - 40px);
+  height: calc(100% - 40px);
+  white-space: pre-wrap;
+  overflow: hidden;
+  font-size: 1.2em;
+  line-height: 1.4;
+  opacity: 1;
+  transition: opacity 1s ease-out;
+}
+
+/* Cursor Animation */
+.cursor {
+  display: inline-block;
+  width: 10px;
+  height: 18px;
+  background: #00ff00;
+  animation: blink 0.8s infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+/* --- You may add further styles for your main content here --- */
+
+/* Example Hero Section Styles */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: url('matrix1.gif') center center / cover no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  animation: pulse 6s ease-in-out infinite alternate;
+  z-index: 1;
+}
+
+@keyframes pulse {
+  from { background: rgba(0, 0, 0, 0.5); }
+  to   { background: rgba(0, 0, 0, 0.3); }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: #fff;
+  opacity: 0;
+  animation: fadeInUp 1.5s forwards;
+}
+
+@keyframes fadeInUp {
+  from { transform: translateY(30px); opacity: 0; }
+  to   { transform: translateY(0); opacity: 1; }
+}
+
+.hero-content h1 {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 20px rgba(0,255,0,0.8);
+}
+
+.hero-content p {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  text-shadow: 0 0 10px rgba(255,255,255,0.5);
+}
+
+.hero-content .btn {
+  padding: 0.75rem 2.5rem;
+  font-size: 1.2rem;
+  border: 2px solid #0f0;
+  border-radius: 50px;
+  background: transparent;
+  color: #0f0;
+  transition: background 0.3s, color 0.3s;
+}
+
+.hero-content .btn:hover {
+  background: #0f0;
+  color: #000;
+}
+
+/* Staggered Animation Delays */
+.animate-delay-1 { animation-delay: 0.5s; }
+.animate-delay-2 { animation-delay: 1s; }
+.animate-delay-3 { animation-delay: 1.5s; }

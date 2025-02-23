@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" 
+          integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" 
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Animate.css for extra animation classes -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="style2.css">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - DevNoLife</title>
+    <style>
+        body {
+            background: black;
+            color: #00ff00;
+            font-family: 'Courier New', Courier, monospace;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden; /* Prevent horizontal overflow */
+            overflow-y: auto; /* Allow vertical scrolling */
+        }
+
+        .projects-container {
+            max-width: 1200px;
+            margin: 30px auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center; /* Center items */
+            gap: 20px;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .project {
+            width: 48%;
+            padding: 20px;
+            border: 2px solid #00ff00;
+            border-radius: 10px;
+            background: rgba(0, 0, 0, 0.8);
+            box-shadow: 0 0 10px #00ff00;
+            box-sizing: border-box;
+        }
+
+        .project img {
+            width: 100%;
+            height: auto; /* Keep aspect ratio intact */
+            max-height: 200px;
+            object-fit: cover;
+            border-radius: 5px;
+            border: 2px solid #00ff00;
+        }
+
+        .project-title {
+            font-size: 1.5em;
+            margin: 10px 0;
+            text-shadow: 0 0 10px #00ff00;
+        }
+
+        .project-description {
+            font-size: 1em;
+            margin-top: 10px;
+            color: #0f0;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 10px;
+            height: 18px;
+            background: #00ff00;
+            animation: blink 0.8s infinite;
+        }
+
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+
+        /* Media Queries for responsiveness */
+        @media (max-width: 1024px) {
+            .project {
+                width: 48%; /* Keep two items per row */
+            }
+
+            .projects-container {
+                margin: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .project {
+                width: 100%; /* One item per row */
+            }
+
+            .project img {
+                max-height: 150px;
+            }
+
+            .projects-container {
+                margin: 20px;
+                padding: 10px;
+            }
+
+            .project-title {
+                font-size: 1.3em;
+            }
+
+            .project-description {
+                font-size: 0.9em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .project-title {
+                font-size: 1.1em;
+            }
+
+            .project-description {
+                font-size: 0.8em;
+            }
+
+            .projects-container {
+                padding: 10px;
+            }
+
+            .project img {
+                max-height: 120px;
+            }
+
+            .project {
+                padding: 15px;
+            }
+        }
+
+        #projectsBtn {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            background: #00ff00;
+            color: black;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Add margin to the project title for spacing */
+        .project-title {
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Main Content (Revealed after the intro) -->
+    <div id="mainContent">
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg bg-light fixed-top animate__animated animate__fadeInDown">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">DevNoLife</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">HomePage</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="profil.html">About Me</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="mesajlar.html">Messages</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="bloglar.html">Blogs/Projects</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://www.google.com/">Exit (Directed to Google)</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <canvas id="matrixCanvas"></canvas>
+        <div class="projects-container">
+            <h1 class="project-title">My Projects (Ones that I think are worth mentioning): <span class="cursor"></span></h1>
+            <div class="project">
+                <h2 class="project-title">Lost Crypto Wallet Finder</h2>
+                <img src="project1.png" alt="Project 1 Image">
+                <p class="project-description">This project basically looked for lost crypto wallets with balance. It took a few weeks to develop and it is currently still functioning. It uses several APIs and libraries to generate and check wallets. If it finds one with balance it provides you with the seed phrase.</p>
+            </div>
+            <div class="project">
+                <h2 class="project-title">Banking system (LOST)</h2>
+                <img src="" alt="No Picture :(" style="display:none;">
+
+                <p class="project-description">This was a fully functional banking system I developed. Unfortunately, after resetting my PC, I realized I hadn't backed it up, so it's lost.</p>
+            </div>
+            <div class="project">
+                <h2 class="project-title">AI Image generator</h2>
+                <img src="generated_art.png" alt="Project 3 Image">
+                <p class="project-description">This AI Image generator creates images based on user prompts. The image above is an example generated using the prompt: "Generate me a logo for a crypto team."</p>
+            </div>
+            <div class="project">
+                <h2 class="project-title">Bloxy Guide</h2>
+                <img src="project4.png" alt="Project 4 Image">
+                <p class="project-description">A website I made for new Roblox users in my native language. It provided tips and information about Roblox. Eventually, I shut it down.</p>
+            </div>
+            <div class="project" style="width: 100%;">
+                <h2 class="project-title">This website :)</h2>
+                <img src="project5.png" alt="Project 5 Image">
+                <p class="project-description">Yep, this website! This is the best website I've ever built (and the one that took the longest). Thank you all for the support!</p>
+            </div>
+        </div>
+    </div>
+    <!-- Bootstrap JS -->
+  <script src="js/bootstrap.bundle.js"></script>
+  <footer>
+    <p>&copy; 2025 DevNoLife. All rights reserved.</p>
+    <p>Contact: <a href="mailto:alpttuncer@gmail.com">alpttuncer@gmail.com</a></p>
+  </footer>
+</body>
+</html>

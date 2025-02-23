@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DevNoLife</title>
+  
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" 
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" 
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+  
+  <!-- Animate.css for extra animation classes -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="style2.css">
+  
+  <style>
+    /* Additional inline styles for main content reveal */
+    #mainContent {
+      display: none; /* Hidden until the intro finishes */
+      opacity: 0;
+      transition: opacity 1s ease-out;
+    }
+    #mainContent.show {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  
+  <!-- Intro Overlay (Contains the terminal and Matrix canvas) -->
+  <div id="intro">
+    <!-- Matrix Rain Canvas -->
+    <canvas id="matrixCanvas"></canvas>
+    <!-- Terminal Text Area -->
+    <div id="terminal"></div>
+  </div>
+  
+  <!-- Main Content (Revealed after the intro) -->
+  <div id="mainContent">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg bg-light fixed-top animate__animated animate__fadeInDown">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">DevNoLife</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">HomePage</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="profil.html">About Me</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="mesajlar.html">Messages</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="bloglar.html">Blogs/Projects</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://www.google.com/">Exit (Directed to Google)</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+        <h1 class="animate__animated animate__fadeInUp animate-delay-1">Welcome to DevNoLife</h1>
+        <p class="animate__animated animate__fadeInUp animate-delay-2">Innovate. Inspire. Ignite.</p>
+        <a href="profile.html" class="btn animate__animated animate__zoomIn animate-delay-3">About Me</a>
+      </div>
+    </section>
+  </div>
+  
+  <!-- Bootstrap JS -->
+  <script src="js/bootstrap.bundle.js"></script>
+  <!-- Custom Script -->
+  <script src="script.js"></script>
+  <footer>
+    <p>&copy; 2025 DevNoLife. All rights reserved.</p>
+    <p>Contact: <a href="mailto:alpttuncer@gmail.com">alpttuncer@gmail.com</a></p>
+  </footer>
+</body>
+</html>

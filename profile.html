@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" 
+          integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" 
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!-- Animate.css for extra animation classes -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me - DevNoLife</title>
+    <link rel="stylesheet" href="style2.css">
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const text = `Hi! I'm DevNoLife. I'm a programmer. I'm fluent in Python, CSS, and HTML. I also know JavaScript and a little bit of C++.
+
+I make a lot of projects as a hobby and I'm studying to be a Software Engineer. I've been coding since 2020. I've made several projects on banking and crypto software, as well as game development, specifically on Roblox. I'm also currently developing more projects related to crypto and crypto trading.
+
+I've made several web pages and I've presented some of my web pages in national competitions.
+
+This website is still under development and is completely made by me. :)
+
+Feel free to reach out to me at:
+Discord: [nopeispro](https://discord.com/users/nopeispro.)
+Email: alpttuncer@gmail.com
+
+Thanks!`;
+
+            let index = 0;
+            function typeWriter() {
+                if (index < text.length) {
+                    document.getElementById("typewriter").innerHTML = text.substring(0, index) + '<span class="cursor"></span>';
+                    index++;
+                    setTimeout(typeWriter, 50);
+                } else {
+                    document.getElementById("typewriter").innerHTML = text + '<span class="cursor"></span>';
+                    setTimeout(() => {
+                        document.getElementById("projectsBtn").style.opacity = "1";
+                    }, 500);
+                }
+            }
+            typeWriter();
+        });
+    </script>
+    <style>
+   body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    overflow-x: hidden; /* Prevent horizontal overflow */
+}
+
+#terminal {
+    padding: 20px;
+    background-color: black;
+    color: white;
+    font-size: 1.2em;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    margin-top: 120px; /* Adjust for fixed navbar */
+    width: 100%;
+    box-sizing: border-box;
+    max-width: 100%; /* Ensure it never exceeds the container */
+    line-height: 1.5; /* Adjust line spacing to help with readability */
+    word-break: break-word; /* Break words at the end of lines */
+    overflow-wrap: break-word; /* Ensure long words wrap properly */
+}
+
+#typewriter {
+    display: inline-block;
+    width: 100%;
+    max-width: 100%;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    white-space: pre-wrap; /* Ensure text wraps on long lines */
+    color: #00FF41
+}
+
+.cursor {
+    display: inline-block;
+    width: 10px;
+    height: 20px;
+    background-color: white;
+    animation: blink 0.5s step-end infinite;
+}
+
+@keyframes blink {
+    50% {
+        background-color: transparent;
+    }
+}
+
+/* Ensure mobile responsiveness */
+@media (max-width: 768px) {
+    #terminal {
+        font-size: 1em;
+        padding: 10px;
+    }
+
+    #projectsBtn {
+        font-size: 1em;
+        padding: 8px 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    #terminal {
+        font-size: 0.9em;
+        padding: 8px;
+    }
+
+    #projectsBtn {
+        font-size: 0.9em;
+        padding: 6px 12px;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <div id="mainContent">
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg bg-light fixed-top animate__animated animate__fadeInDown">
+          <div class="container">
+            <a class="navbar-brand" href="index.html">DevNoLife</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link" href="index.html">HomePage</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="profil.html">About Me</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="mesajlar.html">Messages</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="bloglar.html">Blogs/Projects</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="https://www.google.com/">Exit (Directed to Google)</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+    <canvas id="matrixCanvas"></canvas>
+    <div id="terminal">
+        <pre id="typewriter"></pre>
+    </div>
+    <button id="projectsBtn" onclick="window.location.href='bloglar.html'">Projects</button>
+      <!-- Bootstrap JS -->
+  <script src="js/bootstrap.bundle.js"></script>
+  <footer>
+    <p>&copy; 2025 DevNoLife. All rights reserved.</p>
+    <p>Contact: <a href="mailto:alpttuncer@gmail.com">alpttuncer@gmail.com</a></p>
+  </footer>
+</body>
+</html>
